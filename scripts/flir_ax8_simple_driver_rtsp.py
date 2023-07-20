@@ -14,7 +14,7 @@ def flir_publisher():
     overlay = rospy.get_param('~flir_text_overlay', "off")      #options: on/off (string)
 
     vcap = cv2.VideoCapture("rtsp://"+camera_ip+"/"+encoding+"?overlay="+overlay)
-
+    print("rtsp://"+camera_ip+"/"+encoding+"?overlay="+overlay)
     bridge = CvBridge()
 
     pub = rospy.Publisher(camera_topic, Image, queue_size=10)

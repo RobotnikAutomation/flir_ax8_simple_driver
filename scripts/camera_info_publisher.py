@@ -53,14 +53,14 @@ if __name__ == "__main__":
     #                                          "camera calibration data")
     # args = arg_parser.parse_args()
     # filename = args.filename
-    filename = rospy.get_param("/flir_camera_info/path_yaml") 
+    filename = rospy.get_param("flir_camera_info/path_yaml") 
 
     # Parse yaml file
     camera_info_msg = yaml_to_CameraInfo(filename)
 
     # Initialize publisher node
     rospy.init_node("flir_camera_info", anonymous=True)
-    publisher = rospy.Publisher("flir_ax8/camera_info", CameraInfo, queue_size=10, latch=True)
+    publisher = rospy.Publisher("/robot/thermal_camera/camera_info", CameraInfo, queue_size=10, latch=True)
     rate = rospy.Rate(1)
 
     # Run publisher
